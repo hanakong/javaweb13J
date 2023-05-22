@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'EF_watermelonSalad';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_watermelonSalad.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  font-family: 'GmarketSansMedium';
+}
+.main {
+  margin: 110px 0 20px;
+  text-align: center;
+}
+.main a {
+  font-family: 'EF_watermelonSalad';
+  font-size: 40px;
+}
+
+.join { 
+  width: 410px; 
+  position: absolute; 
+  left: 50%; 
+  top: 50%;  
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  margin-top: 5%;
+}
+.join h2 { 
+  padding:0 0 20px; 
+  border-bottom: 2px solid #262614; 
+  text-align: left; 
+  line-height:1; 
+  font-size: 26px; 
+  color: #262614;
+}
+.id-box {
+  display: flex;
+}
+.id-box #midBtn {
+  width: 140px;
+  height: 46px; 
+  background:#9FA66A; 
+  font-size: 16px; 
+  color:#fff;
+}
+.nick-box {
+  display: flex;
+}
+.nick-box #nickBtn {
+  width: 140px;
+  height: 46px; 
+  background:#9FA66A; 
+  font-size: 16px; 
+  color:#fff;
+}
+.tel-box {
+  display: flex;
+  justify-content: space-between;
+}
+.join .first li {
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+.join .first { 
+  padding: 50px 0 33px;
+}
+.join .first li { 
+  padding:0 0 15px; 
+  text-align: left;
+}
+.join .first li input { 
+  width: 100%; 
+  height: 46px; 
+  box-sizing: border-box; 
+  text-indent: 16px;
+}
+#mid {
+  width: 300px;
+}
+#nickName {
+  width: 300px;
+}
+#nickBtn {
+  text-align: center;
+}
+#midBtn {
+  text-align: center;
+}
+.join .first li input::-webkit-input-placeholder { 
+  font-size:16px; 
+  color:#9fa19f;
+}
+.input input { 
+  width: 100%;
+  padding: 10px 0 40px;  
+  background:#9FA66A; 
+  font-size: 18px; 
+  color:#fff;
+  text-align: center;
+}
+.join .tel-box { 
+  width: 100%; 
+  height: 46px; 
+  box-sizing: border-box; 
+  text-indent: 16px;
+  margin-bottom: 20px;
+}

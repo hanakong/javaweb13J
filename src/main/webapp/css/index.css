@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'EF_watermelonSalad';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_watermelonSalad.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'GmarketSansMedium';
+  color: #262614;
+}
+a {
+  all: unset;
+}
+.login-box {
+  display: flex;
+  justify-content: flex-end;
+  margin:30px 11.5% 15px 0;
+  cursor: pointer;
+}
+.login-box a {
+  padding: 10px 20px ;
+}
+
+
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header a{
+  font-family: 'EF_watermelonSalad';
+  text-decoration: none;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 20px;
+}
+.header > a {
+  font-size: 22px;
+}
+.nav {
+  display: flex;
+  width: 35%;
+  justify-content: space-around;
+  height: 60px;
+  align-items: center;
+}
+.nav .nav-item a {
+  font-family: 'GmarketSansMedium';
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 85px;
+  font-size: 18px;
+}
+.header-hr hr {
+  width: 75%;
+  margin: 0 auto 0;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.banner-box {
+  margin-top: 20px;
+  text-align: center;
+}
+.banner-img > img {
+  width: 100%;
+  height: 600px;
+}
+
+
+
+
+.intro {
+  width: 75%;
+  margin: 50px auto 0;
+}
+.intro-head {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.intro-content {
+  display: flex;
+}
+.intro-content-w {
+  margin-left: 50px;
+  font-size: 18px;
+}
+.intro-content-w .intro-content2 {
+  font-weight: bolder;
+  padding-top: 50px;
+}
+.intro-content2, .intro-content3, .intro-content4 {
+  margin: 10px 0px 20px;
+}
+.intro-content1 hr {
+  width: 500px;
+}
+.intro-content-img img {
+  width: 710px;
+  height: 300px;
+}
+
+
+
+
+
+.insta-box-header {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-size: 27px;
+  justify-content: space-between;
+}
+.insta-box-header i {
+	color: #262614;
+}
+.insta {
+  width: 75%;
+  margin: 0 auto 0;
+}
+.arrow-container {
+  display: flex;
+  transition: transform 0.5s;
+}
+.arrow-container i {
+  padding: 10px;
+  cursor: pointer;
+}
+.foto-box {
+  overflow: hidden;
+}
+.insta-foto {
+  display: flex;
+  justify-content: space-between;
+}
+.insta-foto img {
+  width: 340px;
+  height: 340px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+
+.banner2 {
+  width: 75%;
+  margin: 100px auto 0;
+}
+.banner-box-lt {
+  height: 200px;
+  display: flex;
+  border: 1px solid;
+  justify-content: flex-start;
+}
+.banner-lt-img img {
+  width: 100%;
+  height: 200px;
+}
+.arrow-container2 {
+  display: flex;
+  justify-content: end;
+  font-size: 20px;
+}
+.arrow-container2 i {
+  padding: 10px;
+  cursor: pointer;
+}
+.footer {
+  margin-top: 40px;
+  margin: 100px auto 0;
+}
+.footer-box {
+  padding: 40px;
+  background-color: #D9D9D9;
+}
+.box-inner {
+  text-align: center;
+  margin: 7px;
+  font-size: 16px;
+  color: #262614;
+}
+
