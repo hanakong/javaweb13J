@@ -9,4 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>homeAddress</param-name>
+    <param-value>http://192.168.50.89:9090/javaweb13J/</param-value>
+  </context-param>
 </web-app>
