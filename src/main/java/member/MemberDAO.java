@@ -98,4 +98,17 @@ public class MemberDAO {
 		}
 		return res;
 	}
+
+	public void setDeleteAskOk(String mid) {
+		try {
+			sql = "update member set userDel = 'OK' where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 에러 : " + e.getMessage());
+		} finally {
+			getConn.pstmtClose();
+		}	
+	}
 }

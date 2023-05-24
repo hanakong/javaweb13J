@@ -52,12 +52,12 @@
 	    font-style: normal;
 	}
 	* {
-	  box-sizing: border-box;
 	  font-family: 'GmarketSansMedium';
 	  color: #262614;
 	}
 	a {
 	  all: unset;
+	  cursor : pointer; 
 	}
 	.login-box {
 	  display: flex;
@@ -78,10 +78,7 @@
 	  font-weight: 900;
 	  padding: 20px;
 	}
-	.header a:hover {
-	  cursor: pointer;
-	}
-	.header > a {
+ 		.header > a {
 	  font-size: 22px;
 	}
 	.nav {
@@ -106,15 +103,14 @@
 	}
 </style>
 
-
 <header>
-  <div class="login-box">
-    <c:if test="${level > 4}"><div class="join"><a href="${pageContext.request.contextPath}/MemberJoin.mem">회원가입</a></div></c:if>
-    <c:if test="${level > 4}"><div class="login"><a href="${pageContext.request.contextPath}/MemberLogin.mem">로그인</a></div></c:if>
-   	<c:if test="${level <= 4}"><div class="logout"><a href="${pageContext.request.contextPath}/MemberMain.mem">개인정보</a></div></c:if>
-   	<c:if test="${sLevel == 0}"><div class="admin"><a href="${pageContext.request.contextPath}/AdminMain.ad">관리자메뉴</a></div></c:if>
-   	<c:if test="${level <= 4}"><div class="logout"><a href="${pageContext.request.contextPath}/MemberLogout.mem">로그아웃</a></div></c:if>
-  </div>
+  <span class="login-box">
+    <c:if test="${level > 4}"><span class="join"><a href="${pageContext.request.contextPath}/MemberJoin.mem">회원가입</a></span></c:if>
+    <c:if test="${level > 4}"><span class="login"><a href="${pageContext.request.contextPath}/MemberLogin.mem">로그인</a></span></c:if>
+   	<c:if test="${level <= 4}"><span class="logout"><a href="${pageContext.request.contextPath}/MemberPrivacy.mem">개인정보</a></span></c:if>
+   	<c:if test="${sLevel == 0}"><span class="admin"><a href="${pageContext.request.contextPath}/AdminMain.ad">관리자메뉴</a></span></c:if>
+   	<c:if test="${level <= 4}"><span class="logout"><a href="${pageContext.request.contextPath}/MemberLogout.mem">로그아웃</a></span></c:if>
+  </span>
   <div class="header-hr"><hr/></div>
   <div class="header">
     <h2><a href="${pageContext.request.contextPath}/index.jsp">무화과 농장</a></h2>

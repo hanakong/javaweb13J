@@ -21,7 +21,7 @@
     	let searchString = $("#searchString").val();
     	
     	if(searchString.trim() == "") {
-    		alert("찾고자하는 검색어를 입력하세요!");
+    		alert("검색하실 단어를 입력해주세요.");
     		searchForm.searchString.focus();
     	}
     	else {
@@ -44,6 +44,35 @@
 	  background-image: url(${ctp}/images/board/banner-a.jpg);
 	  height: 350px;
 	}
+	.table-bl {
+		background-color: #D9D9D9;
+	}
+	#b-wr{
+		width : 15px;
+		height : 15px;
+		align-items : center;
+	}
+	#searchString {
+		opacity : 0.5;
+		height : 33px; 
+		border-left:0;
+		border-right:0;
+		border-top:0;
+		border-bottom:1px solid  rgba(0, 0, 0, .7);
+	}
+	#pageSize {
+		border-left : 0;
+		border-right : 0;
+		border-top : 0;
+		border-bottom : 1px solid  rgba(0, 0, 0, .5);
+		align-items : center;
+		cursor : pointer;
+	}
+	#search1{
+		cursor : pointer;
+	}
+	
+	
   </style>
 	<title>공지사항</title>
 	<jsp:include page="/include/bs4.jsp" />
@@ -57,7 +86,7 @@
 	  <h2 class="text-center">공지사항</h2>
 	  <table class="table table-borderless">
 	    <tr>
-	      <td><c:if test="${sLevel == 0}"><a href="${ctp}/BoardInput.bo" class="btn btn-primary btn-sm">글쓰기</a></c:if></td>
+	      <td class="b-wr"><c:if test="${sLevel == 0}"><a href="${ctp}/BoardInput.bo" class="btn"><img id="b-wr" src="${ctp}/images/board/b-wr.jpg"></img> 글쓰기</a></c:if></td>
 	      <td class="text-right">
 	        <!-- 한페이지 분량처리 -->
 	        <select name="pageSize" id="pageSize" onchange="pageCheck()">
@@ -71,7 +100,7 @@
 	    </tr>
 	  </table>
 	  <table class="table table-hover text-center">
-	    <tr class="table-dark text-dark">
+	    <tr class="table-bl text-dark">
 	      <th>글번호</th>
 	      <th>글제목</th>
 	      <th>글쓴이</th>
@@ -92,7 +121,7 @@
 	          <!-- 단(24시간안에 만족하는 자료), 날짜가 오늘날짜만 시간으로표시하고, 어제날짜는 날짜로 표시하시오. -->
 	          <c:if test="${vo.hour_diff > 24}">${fn:substring(vo.wDate,0,10)}</c:if>
 	          <c:if test="${vo.hour_diff <= 24}">
-	            ${vo.day_diff == 0 ? fn:substring(vo.wDate,11,19) : fn:substring(vo.wDate,0,16)}
+	            ${vo.day_diff == 0 ? fn:substring(vo.wDate,11,16) : fn:substring(vo.wDate,0,10)}
 	          </c:if>
 	        </td>
 	        <td>${vo.readNum}</td>
@@ -120,9 +149,8 @@
 	  <div class="container text-center">
 	    <form name="searchForm" method="post" action="${ctp}/BoardSearch.bo">
 	      <b>검색 : </b>
-	      <select name="search">
+	      <select name="search" id="search1">
 	        <option value="title" selected>글제목</option>
-	        <option value="nickName">글쓴이</option>
 	        <option value="content">글내용</option>
 	      </select>
 	      <input type="text" name="searchString" id="searchString"/>

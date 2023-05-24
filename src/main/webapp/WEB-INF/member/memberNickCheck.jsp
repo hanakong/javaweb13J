@@ -3,11 +3,48 @@
 <c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>memberNickCheck.jsp</title>
-  <jsp:include page="/include/bs4.jsp" />
+  <style>
+  @font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+	}
+	.chk_nick {
+		font-size : 18px;
+		font-family: 'GmarketSansMedium';
+    text-align: center;
+	}
+  .chk_nick-head {
+    font-family: 'GmarketSansMedium';
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .nick_btn1 {
+    display: grid;
+    grid-template-columns: 130px;
+    justify-content: center;
+  }
+  .nick_btn2 {
+    display: grid;
+    grid-template-columns: 170px 130px;
+    column-gap: 5px;
+    justify-content: center;
+  }
+  p input[type=button] {
+    height: 36px;
+    background: #B7BF99;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+  }
+  
+  </style>
   <script>
     'use strict';
     
@@ -33,15 +70,15 @@
 <body>
 <p><br/></p>
 <div class="container">
-  <h3>닉네임 체크폼</h3>
+  <h3 class="chk_nick-head">닉네임 체크폼</h3>
   <c:if test="${res == 1}">
-    <h4>입력하신 <font color="blue"><b>${nickName}</b></font>은/는 사용 가능한 닉네임입니다.</h4>
-    <p><input type="button" value="창닫기" onclick="sendCheck()"/></p>
+    <h4 class="chk_nick">입력하신 <font color="#B7BF99"><b>${nickName}</b></font> 은/는 사용 가능한 닉네임입니다.</h4>
+    <p class="nick_btn1"><input type="button" value="창닫기" onclick="sendCheck()"/></p>
   </c:if>
   <c:if test="${res != 1}">
-    <h4>입력하신 <font color="blue"><b>${nickName}</b></font>은/는 이미 사용중인 닉네임입니다.</h4>
+    <h4 class="chk_nick">입력하신 <font color="#B7BF99"><b>${nickName}</b></font> 은/는 이미 사용중인 닉네임입니다.</h4>
     <form name="childForm" method="post" action="${ctp}/MemberNickCheck.mem">
-    	<p>
+    	<p class="nick_btn2">
     	  <input type="text" name="nickName"/>
     	  <input type="button" value="닉네임재검색" onclick="nickCheck()"/>
     	</p>

@@ -11,10 +11,25 @@
   <title>공지사항</title>
   <jsp:include page="/include/bs4.jsp" />
   <style>
+	  .board-img-box {
+		  width: 75%;
+		  margin: 0 auto 0;
+		  justify-content: center;
+		  align-items: center;
+	  }
+	  .board-img {
+		  width: 100%;
+		  margin: 40px 0 40px;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+		  background-image: url(${ctp}/images/board/banner-a.jpg);
+		  height: 350px;
+		}
     th {
       text-align: center;
       background-color: #eee;
     }
+   
   </style>
   <script>
     'use strict';
@@ -61,7 +76,7 @@
     
     // 댓글삭제
     function replyDelete(idx) {
-    	let ans = confirm("선택한 댓글을 삭제하시겠습니까?");
+    	let ans = confirm("선택하신 댓글을 정말로 삭제하시겠습니까?");
       if(!ans) return false;
       
       $.ajax({
@@ -86,7 +101,9 @@
 </head>
 <body>
 <jsp:include page="/include/header.jsp" />
-<p><br/></p>
+<div class="board-img-box">
+		<div class="board-img"></div>
+	</div>
 <div class="container">
   <h2 class="text-center">공지사항</h2>
   <br/>
@@ -100,7 +117,7 @@
       <th>글쓴이</th>
       <td>${vo.nickName}</td>
       <th>글쓴날짜</th>
-      <td>${fn:substring(vo.wDate,0,fn:length(vo.wDate)-2)}</td>
+      <td>${fn:substring(vo.wDate,0,fn:length(vo.wDate)-5)}</td>
     </tr>
     <tr>
       <th>글제목</th>
@@ -108,7 +125,7 @@
     </tr>
     <tr>
       <th>글내용</th>
-      <td colspan="3" style="height:320px">${fn:replace(vo.content, newLine, "<br/>")}</td>
+      <td colspan="3" style="height:350px">${fn:replace(vo.content, newLine, "<br/>")}</td>
     </tr>
     <tr>
       <td colspan="4" class="text-center">
@@ -117,31 +134,15 @@
         <c:if test="${flag != 'search' && flag != 'searchMember'}"><input type="button" value="돌아가기" onclick="location.href='${ctp}/BoardList.bo?pag=${pag}&pageSize=${pageSize}';" class="btn btn-primary"/></c:if>
         &nbsp;
         <!-- 작성한 사람이 같거나 관리자면 삭제 가능 -->
-      	<c:if test="${sMid == vo.mid || sLevel == 0}">
+      	<c:if test="${sLevel == 0}">
         	<input type="button" value="수정하기" onclick="location.href='${ctp}/BoardUpdate.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}';" class="btn btn-warning"/> &nbsp;
         	<input type="button" value="삭제하기" onclick="boardDelete()" class="btn btn-danger"/>
       	</c:if>
       </td>
     </tr>
   </table>
-  
-  <c:if test="${flag != 'search' && flag != 'searchMember'}">
-	  <!-- 이전글/ 다음글 처리 -->
-	  <table class="table table-borderless">
-	    <tr>
-	      <td>
-	        <c:if test="${nextVO.nextIdx != 0}">
-	        	🔺 <a href="${ctp}/BoardContent.bo?idx=${nextVO.nextIdx}&pag=${pag}&pageSize=${pageSize}">다음글 : ${nextVO.nextTitle}</a><br/>
-	        </c:if>
-	        <c:if test="${preVO.preIdx != 0}">
-	        	🔻 <a href="${ctp}/BoardContent.bo?idx=${preVO.preIdx}&pag=${pag}&pageSize=${pageSize}">이전글 : ${preVO.preTitle}</a><br/>
-	        </c:if>
-	      </td>
-	    </tr>
-	  </table>
-  </c:if>
-  
   <!-- 댓글 리스트보여주기 -->
+  <c:if test="${sLevel <= 4}">
   <div class="container">
     <table class="table table-hover text-left">
       <tr>
@@ -166,6 +167,7 @@
   </div>
   
   <!-- 댓글 입력창 -->
+ 
   <form name="replyForm">
   	<table class="table tbale-center">
   	  <tr>
@@ -181,6 +183,7 @@
   	  </tr>
   	</table>
   </form>
+ </c:if>
 </div>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />

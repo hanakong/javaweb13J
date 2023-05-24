@@ -7,8 +7,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>memberJoin.jsp</title>
-  <jsp:include page="/include/bs4.jsp" />
-  <link rel="stylesheet" href="${ctp}/css/default.css">
   <style type="text/css">
   @charset "utf-8";
 	@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -268,7 +266,6 @@
     		alert("회원가입에 실패하였습니다. //n입력하신 내용을 다시한번 확인해주세요.");
     	}
     }
-    
     // 아이디 중복체크
     function idCheck() {
     	let mid = myform.mid.value;
@@ -281,10 +278,9 @@
     	else {
     		idCheckSw = 1;
     		myform.mid.readOnly = true;
-    		window.open(url,"nWin","width=580px,height=250px");
+    		window.open(url,"nWin","width=460px, height=260px, left=200px, top=200px");
     	}
     }
-    
     // 닉네임 중복체크
     function nickCheck() {
     	let nickName = myform.nickName.value;
@@ -297,7 +293,7 @@
     	else {
     		nickCheckSw = 1;
     		myform.nickName.readOnly = true;
-    		window.open(url,"nWin","width=580px,height=250px");
+    		window.open(url,"nWin","width=460px, height=260px, left=200px, top=200px");
     	}
     }
     

@@ -50,7 +50,7 @@ public class BoardDAO {
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)1 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -71,7 +71,7 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 			res = 1;
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)2 : " + e.getMessage());
 		} finally {
 			getConn.pstmtClose();
 		}
@@ -88,7 +88,7 @@ public class BoardDAO {
 			rs.next();
 			totRecCnt = rs.getInt("cnt");
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)3 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -115,7 +115,7 @@ public class BoardDAO {
 			vo.setwDate(rs.getString("wDate"));
 			
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)4 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -129,39 +129,10 @@ public class BoardDAO {
 			pstmt.setInt(1, idx);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)5 : " + e.getMessage());
 		} finally {
 			getConn.pstmtClose();
 		}
-	}
-	//이전글 다음글 처리
-	public BoardVO getPreNextSearch(int idx, String str) {
-		vo = new BoardVO();
-		try {
-			if(str.equals("preVo")) {
-				sql = "select idx,title from board where idx < ? order by idx desc limit 1"; /* 이전글 */
-			}
-			else {
-				sql = "select idx,title from board where idx > ? limit 1;";  /* 다음글 처리 */
-			}
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
-			rs = pstmt.executeQuery();
-			
-			if(str.equals("preVo") && rs.next()) {
-				vo.setPreIdx(rs.getInt("idx"));
-				vo.setPreTitle(rs.getString("title"));
-			}
-			else if(str.equals("nextVo") && rs.next()) {
-				vo.setNextIdx(rs.getInt("idx"));
-				vo.setNextTitle(rs.getString("title"));
-			}
-		} catch (SQLException e) {
-			System.out.println("SQL 에러 : " + e.getMessage());
-		} finally {
-			getConn.rsClose();
-		}
-		return vo;
 	}
 
 	// 검색기 자료검색 처리
@@ -187,7 +158,7 @@ public class BoardDAO {
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL 에러 : " + e.getMessage());
+			System.out.println("SQL 에러(board)7 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -204,7 +175,7 @@ public class BoardDAO {
 				pstmt.setInt(1, idx);
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
-				System.out.println("SQL문 오류 : " + e.getMessage());
+				System.out.println("SQL문 오류(board)8 : " + e.getMessage());
 			} finally {
 				getConn.pstmtClose();
 			}
@@ -215,7 +186,7 @@ public class BoardDAO {
 				pstmt.executeUpdate();
 				res = 1;
 			} catch (SQLException e) {
-				System.out.println("SQL문 오류 : " + e.getMessage());
+				System.out.println("SQL문 오류(board)9 : " + e.getMessage());
 			} finally {
 				getConn.pstmtClose();
 			}
@@ -235,7 +206,7 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 			res = 1;
 		} catch (SQLException e) {
-			System.out.println("SQL 에러 : " + e.getMessage());
+			System.out.println("SQL 에러(board)10 : " + e.getMessage());
 		} finally {
 			getConn.pstmtClose();
 		}
@@ -257,7 +228,7 @@ public class BoardDAO {
 			res = "1";
 			
 		} catch (SQLException e) {
-			System.out.println("SQL 에러 : " + e.getMessage());
+			System.out.println("SQL 에러(board)11 : " + e.getMessage());
 		} finally {
 			getConn.pstmtClose();
 		}
@@ -286,7 +257,7 @@ public class BoardDAO {
 				replyVOS.add(replyVO);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL 에러 : " + e.getMessage());
+			System.out.println("SQL 에러(board)12 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -303,7 +274,7 @@ public class BoardDAO {
       pstmt.executeUpdate();
       res = "1"; 
     } catch (SQLException e) {
-       System.out.println("SQL 오류 : " + e.getMessage());
+       System.out.println("SQL 오류(board)13 : " + e.getMessage());
     } finally {
        getConn.pstmtClose();
     }
@@ -321,7 +292,7 @@ public class BoardDAO {
 			rs.next();
 			totRecCnt = rs.getInt("cnt");
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)14 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
@@ -360,7 +331,7 @@ public class BoardDAO {
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 : " + e.getMessage());
+			System.out.println("SQL 오류(board)15 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}

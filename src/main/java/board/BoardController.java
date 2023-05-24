@@ -21,26 +21,13 @@ public class BoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"),uri.lastIndexOf("."));
 		
-		// 세션이 끈겼다고한다면 작업의 진행을 중지시키고 홈으로 전송한다.
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 99 : (int) session.getAttribute("sLevel");
 				
-		if(level > 4) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/");
-			dispatcher.forward(request, response);
-		}
-		else if(com.equals("/BoardList")) {
+		if(com.equals("/BoardList")) {
 			command = new BoardListCommand();
 			command.execute(request, response);
 			viewPage += "/boardList.jsp";
-		}
-		else if(com.equals("/BoardInput")) {
-			viewPage += "/boardInput.jsp";
-		}
-		else if(com.equals("/BoardInputOk")) {
-			command = new BoardInputOkCommand();
-			command.execute(request, response);
-			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/BoardContent")) {
 			command = new BoardContentCommand();
@@ -51,6 +38,23 @@ public class BoardController extends HttpServlet {
 			command = new BoardSearchCommand();
 			command.execute(request, response);
 			viewPage += "/boardSearch.jsp";
+		}
+		else if(com.equals("/BoardSearchMember")) {
+			command = new BoardSearchMemberCommand();
+			command.execute(request, response);
+			viewPage += "/boardSearchMember.jsp";
+		}
+		else if(level > 4) {	// 비회원인경우는 초기화면으로 보내버린다.
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+			dispatcher.forward(request, response);
+		}
+		else if(com.equals("/BoardInput")) {
+			viewPage += "/boardInput.jsp";
+		}
+		else if(com.equals("/BoardInputOk")) {
+			command = new BoardInputOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/BoardDelete")) {
 			command = new BoardDeleteCommand();
@@ -76,11 +80,6 @@ public class BoardController extends HttpServlet {
 			command = new BoardReplyDeleteCommand();
 			command.execute(request, response);
 			return;
-		}
-		else if(com.equals("/BoardSearchMember")) {
-			command = new BoardSearchMemberCommand();
-			command.execute(request, response);
-			viewPage += "/boardSearchMember.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

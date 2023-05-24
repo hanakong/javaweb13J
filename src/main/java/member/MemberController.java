@@ -20,25 +20,20 @@ public class MemberController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"),uri.lastIndexOf("."));
-		
+
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 99 : (int) session.getAttribute("sLevel");
-				
-		if(com.equals("/MemberLogin")) {
-			command = new MemberLoginCommand();
-			command.execute(request, response);
-			viewPage += "/memberLogin.jsp";
-		}
-		else if(com.equals("/MemberLoginOk")) {
-			command = new MemberLoginOkCommand();
-			command.execute(request, response);
-			viewPage = "/include/message.jsp";
-		}
-		else if(com.equals("/Soge")) {
+		
+		if(com.equals("/Soge")) {
 			viewPage += "/soge.jsp";
 		}
 		else if(com.equals("/MemberJoin")) {
 			viewPage += "/memberJoin.jsp";
+		}
+		else if(com.equals("/MemberLogin")) {
+			command = new MemberLoginCommand();
+			command.execute(request, response);
+			viewPage += "/memberLogin.jsp";
 		}
 		else if(com.equals("/MemberIdCheck")) {
 			command = new MemberIdCheckCommand();
@@ -50,13 +45,31 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/memberNickCheck.jsp";
 		}
+		else if(com.equals("/MemberLoginOk")) {
+			command = new MemberLoginOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		else if(com.equals("/MemberJoinOk")) {
 			command = new MemberJoinOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		/////////비회원인경우는 초기화면으로 보내버린다.
+		else if(level > 4) {	
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+			dispatcher.forward(request, response);
+		}
+		else if(com.equals("/MemberPrivacy")) {
+			viewPage += "/memberPrivacy.jsp";
+		}
 		else if(com.equals("/MemberLogout")) {
 			command = new MemberLogoutCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MemberDeleteAsk")) {
+			command = new MemberDeleteAskCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
