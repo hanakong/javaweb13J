@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="ctp" value="${pageContext.request.contextPath}" />
 <%
   int level = session.getAttribute("sLevel")==null ? 99 : (int) session.getAttribute("sLevel");
   pageContext.setAttribute("level", level);
@@ -105,21 +106,21 @@
 
 <header>
   <span class="login-box">
-    <c:if test="${level > 4}"><span class="join"><a href="${pageContext.request.contextPath}/MemberJoin.mem">회원가입</a></span></c:if>
-    <c:if test="${level > 4}"><span class="login"><a href="${pageContext.request.contextPath}/MemberLogin.mem">로그인</a></span></c:if>
-   	<c:if test="${level <= 4}"><span class="logout"><a href="${pageContext.request.contextPath}/MemberPrivacy.mem">개인정보</a></span></c:if>
-   	<c:if test="${sLevel == 0}"><span class="admin"><a href="${pageContext.request.contextPath}/AdminMain.ad">관리자메뉴</a></span></c:if>
-   	<c:if test="${level <= 4}"><span class="logout"><a href="${pageContext.request.contextPath}/MemberLogout.mem">로그아웃</a></span></c:if>
+    <c:if test="${level > 2}"><span class="join"><a href="${pageContext.request.contextPath}/MemberJoin.mem">회원가입</a></span></c:if>
+    <c:if test="${level > 2}"><span class="login"><a href="${ctp}/MemberLogin.mem">로그인</a></span></c:if>
+   	<c:if test="${level <= 2}"><span class="logout"><a href="${ctp}/MemberPrivacy.mem">개인정보</a></span></c:if>
+   	<c:if test="${sLevel == 0}"><span class="admin"><a href="${ctp}/AdminMain.ad">관리자메뉴</a></span></c:if>
+   	<c:if test="${level <= 2}"><span class="logout"><a href="${ctp}/MemberLogout.mem">로그아웃</a></span></c:if>
   </span>
   <div class="header-hr"><hr/></div>
   <div class="header">
-    <h2><a href="${pageContext.request.contextPath}/index.jsp">무화과 농장</a></h2>
+    <h2><a href="${ctp}/index.jsp">무화과 농장</a></h2>
     <div class="nav">
-      <div class="nav-item"><a href="${pageContext.request.contextPath}/Soge.mem">소개</a></div>
-     	<c:if test="${level <= 4}"><div class="nav-item"><a href="#">예약</a></div></c:if>
-      <div class="nav-item"><a href="#">후기</a></div>
-      <div class="nav-item"><a href="#">스토어</a></div>
-      <div class="nav-item"><a href="${pageContext.request.contextPath}/BoardList.bo">공지사항</a></div>
+      <div class="nav-item"><a href="${ctp}/Soge.mem">소개</a></div>
+     	<div class="nav-item"><a href="${ctp}/Reservation.res">예약</a></div>
+     	<div class="nav-item"><a href="${ctp}/ReviewList.rev">후기</a></div>
+      <div class="nav-item"><a href="${ctp}/StoreMain.st">스토어</a></div>
+      <div class="nav-item"><a href="${ctp}/BoardList.bo">공지사항</a></div>
     </div>
   </div>
 	<div class="header-hr"><hr/></div>
