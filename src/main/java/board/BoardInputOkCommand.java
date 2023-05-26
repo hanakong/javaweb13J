@@ -33,7 +33,7 @@ public class BoardInputOkCommand implements BoardInterface {
 		int res = dao.setBoardInputOk(vo);
 		
 		if(res == 1) {
-			request.setAttribute("msg", "후기가 등록되었습니다.");
+			request.setAttribute("msg", "공지사항이 등록되었습니다.");
 			request.setAttribute("url", request.getContextPath()+"/ReviewList.rev");
 		}
 		else {

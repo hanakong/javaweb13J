@@ -9,6 +9,7 @@ public class ReviewVO {
 	private String wDate;
 	private String photoImg;
 	
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -51,7 +52,6 @@ public class ReviewVO {
 	public void setPhotoImg(String photoImg) {
 		this.photoImg = photoImg;
 	}
-	
 	@Override
 	public String toString() {
 		return "ReviewVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", content=" + content + ", hostIP="

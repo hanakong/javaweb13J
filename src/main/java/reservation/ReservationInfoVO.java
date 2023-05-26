@@ -2,14 +2,14 @@ package reservation;
 
 public class ReservationInfoVO {
 	private int idx;
-	private String title;
-	private String content;
 	private int reservNum; //인원 합
-	private String progress;
+	private int price;
+	private String title;
+	private String photo;
 	private String startDate;
 	private String endDate;
-	private String popup;
-	private String photo;
+	private String content;
+	private String progress;
 	
 	public int getIdx() {
 		return idx;
@@ -17,29 +17,29 @@ public class ReservationInfoVO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 	public int getReservNum() {
 		return reservNum;
 	}
 	public void setReservNum(int reservNum) {
 		this.reservNum = reservNum;
 	}
-	public String getProgress() {
-		return progress;
+	public int getPrice() {
+		return price;
 	}
-	public void setProgress(String progress) {
-		this.progress = progress;
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	public String getStartDate() {
 		return startDate;
@@ -53,22 +53,22 @@ public class ReservationInfoVO {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getPopup() {
-		return popup;
+	public String getContent() {
+		return content;
 	}
-	public void setPopup(String popup) {
-		this.popup = popup;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getPhoto() {
-		return photo;
+	public String getProgress() {
+		return progress;
 	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setProgress(String progress) {
+		this.progress = progress;
 	}
 	@Override
 	public String toString() {
-		return "ReservationInfoVO [idx=" + idx + ", title=" + title + ", content=" + content + ", reservNum=" + reservNum
-				+ ", progress=" + progress + ", startDate=" + startDate + ", endDate=" + endDate + ", popup=" + popup
-				+ ", photo=" + photo + "]";
+		return "ReservationInfoVO [idx=" + idx + ", reservNum=" + reservNum + ", price=" + price + ", title=" + title
+				+ ", photo=" + photo + ", startDate=" + startDate + ", endDate=" + endDate + ", content=" + content
+				+ ", progress=" + progress + "]";
 	}
 }

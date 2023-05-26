@@ -1,14 +1,15 @@
 create table reservationInfo (
 	idx int not null auto_increment primary key,
+	reservNum int default 0, 				-- 예약인원  
+	price int default 0,
 	title varchar(40) not null,
-	content text not null,
-	reservNum int default 0,
-	progress varchar(10) default '모집중',
+	photo varchar(100),
 	startDate datetime default now(),
 	endDate datetime default now(),
-	popup char(2) default 'OK',
-	photo varchar(100)
+	content text not null,
+	progress varchar(10) default '진행중'
 );
+drop table reservationInfo;
 
 create table reservation (
 	idx int not null auto_increment primary key,

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
+	<title>[무화과농장] 후기</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 	<style>
 		.box-head {
 			width: 60%;
@@ -118,15 +121,39 @@
 		.review-content .review-content-top {
 			margin: 0;
 			display: flex;
-			justify-content: flex-end;
+			justify-content: space-between;
 			align-items: first baseline;
 		}
 		.review-content .review-content-top .review-content-top-writer {
 			margin-right: 10px;
 		}
-			
 	</style>
-	<title>후기</title>
+	<script>
+	  'use strict';
+	  
+	  function reviewDelete(idx) {
+		  let ans = confirm("삭제하시겠습니까?");
+		  if(!ans) return false;
+		  
+		  $.ajax({
+			  type : "post",
+			  url  : "${ctp}/ReviewDelete.rev",
+			  data : {idx : idx},
+			  success:function(res) {
+				  if(res = 1) {
+					  alert("삭제되었습니다.");
+					  location.reload();
+				  }
+				  else {
+					  alert("삭제 실패하였습니다.");
+				  }
+			  },
+			  error : function() {
+				  alert("전송 실패!~");
+			  }
+		  });
+	  }
+	</script>
 </head>
 <body>
 	<jsp:include page="/include/header.jsp" />
@@ -139,31 +166,36 @@
     <hr class="box-head-btm" />
     <div class="write"><a href="${ctp}/ReviewInput.rev"><img src="${ctp}/images/review/b-wr.jpg" alt="후기 글 작성"> 후기 작성</a></div>
   </div>
-  <div class="big-container">
-    <div class="container">
-      <div class="review-container">
-        <div class="review-container-head">
-          <div class="head-menu">
-            <div><input type="button" value="수정" /></div>
-            <div><input type="button" value="삭제" /></div>
-          </div>
-          <div class="hostIP">IP : 0.0.0.0</div>
-        </div>
-        <div class="review-box">
-          <div class="review-box-img"><img src="${ctp}/images/review/default.png" /></div>
-          <div class="review-content">
-            <div class="review-content-top">
-              <div class="review-content-top-writer">글 작성자</div>
-              <div class="review-content-top-date">2023.05.25</div>
-            </div>
-            <div class="review-content-btm">
-              내용적는곳 내용적는곳 내용적는곳 내용적는곳 내용적는곳
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- 반복구간 -->
+  <c:forEach var="vo" items="${vos}" varStatus="st">
+	  <div class="big-container">
+	    <div class="container">
+	      <div class="review-container">
+          <div class="reveiw-content-top-idx" style="visibility: hidden">${vo.idx}</div>
+	        <div class="review-container-head">
+	          <c:if test="${sLevel == 0 || sMid == vo.mid}"><div class="head-menu">
+	            <div><input type="button" value="수정" /></div>
+	            <div><input type="button" value="삭제" onclick="reviewDelete(${vo.idx})" /></div>
+	          </div></c:if>
+	           <c:if test="${sLevel == 0}"><div class="hostIP">${vo.hostIP}</div></c:if>
+	        </div>
+	        <div class="review-box">
+	          <div class="review-box-img"><img src="${ctp}/images/imgDB/${vo.photoImg}" /></div>
+	          <div class="review-content">
+	            <div class="review-content-top">
+	              <div class="review-content-top-date">${fn:substring(vo.wDate,0,16)}</div>
+	              <div class="review-content-top-writer">${vo.nickName}</div>
+	            </div>
+	            <div class="review-content-btm">
+	              ${vo.content}
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+  </c:forEach>
+  <!-- 반복구간 끝! -->
 	<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

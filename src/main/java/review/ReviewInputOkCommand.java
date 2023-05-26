@@ -36,5 +36,14 @@ public class ReviewInputOkCommand implements ReviewInterface {
 		ReviewDAO dao = new ReviewDAO();
 		int res = dao.setReviewInputOk(vo);
 		
+		if(res == 1) {
+			request.setAttribute("msg", "후기가 등록되었습니다.");
+			request.setAttribute("url", request.getContextPath()+"/ReviewList.rev");
+		}
+		else {
+			request.setAttribute("msg", "후기 등록을 실패하였습니다.");
+			request.setAttribute("url", request.getContextPath()+"/ReviewInput.rev");
+		}
+		
 	}
 }

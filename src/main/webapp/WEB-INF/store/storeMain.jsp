@@ -193,24 +193,24 @@
 	  <div class="store-product-box">
 	    <div class="store-product-set">
 	      <div class="product-set1">
-	        <a href=""><img src="${ctp}/images/store/fig1.jpg"/>
+	        <a href=""><img src="${ctp}/images/store/fig1.jpg"/></a>
 	        <div class="set1-inner">[친환경] 검정 무화과 1kg</div>
-	        <div class="set1-inner2"><b>25,000원</b></div></a>
+	        <div class="set1-inner2"><b>25,000원</b></div>
 	      </div>
 	      <div class="product-set1">
-	        <a href=""><img src="${ctp}/images/store/fig2.jpg"/>
+	        <a href=""><img src="${ctp}/images/store/fig2.jpg"/></a>
 	        <div class="set1-inner">[친환경] 청 무화과 1kg</div>
-	        <div class="set1-inner2"><b>25,000원</b></div></a>
+	        <div class="set1-inner2"><b>25,000원</b></div>
 	      </div>
 	      <div class="product-set1">
-	        <a href=""><img src="${ctp}/images/store/fig3.jpg"/>
+	        <a href=""><img src="${ctp}/images/store/fig3.jpg"/></a>
 	        <div class="set1-inner">말랑말랑 말린 무화과 500g</div>
-	        <div class="set1-inner2"><b>12,000원</b></div></a>
+	        <div class="set1-inner2"><b>12,000원</b></div>
 	      </div>
 	      <div class="product-set1">
-	        <a href=""><img src="${ctp}/images/store/fig4.jpg"/>
+	        <a href=""><img src="${ctp}/images/store/fig4.jpg"/></a>
 	        <div class="set1-inner">[친환경] 혼합 무화과 1kg</div>
-	        <div class="set1-inner2"><b>28,000원</b></div></a>
+	        <div class="set1-inner2"><b>28,000원</b></div>
 	      </div>
 	    </div>
 	  </div>

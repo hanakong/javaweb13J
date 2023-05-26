@@ -117,7 +117,7 @@
     <h2><a href="${ctp}/index.jsp">무화과 농장</a></h2>
     <div class="nav">
       <div class="nav-item"><a href="${ctp}/Soge.mem">소개</a></div>
-     	<div class="nav-item"><a href="${ctp}/Reservation.res">예약</a></div>
+     	<div class="nav-item"><a href="${ctp}/ReservationList.res">예약</a></div>
      	<div class="nav-item"><a href="${ctp}/ReviewList.rev">후기</a></div>
       <div class="nav-item"><a href="${ctp}/StoreMain.st">스토어</a></div>
       <div class="nav-item"><a href="${ctp}/BoardList.bo">공지사항</a></div>

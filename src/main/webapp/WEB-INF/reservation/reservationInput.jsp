@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>[무화과농장]후기 작성</title>
+  <title>[무화과농장]행사 등록</title>
   <jsp:include page="/include/bs4.jsp" />
   <style>
 	  .review-img-box {
@@ -20,7 +20,7 @@
 		  margin: 40px 0 40px;
 		  background-size: cover;
 		  background-repeat: no-repeat;
-		  background-image: url(${ctp}/images/review/banner-r.jpg);
+		  background-image: url(${ctp}/images/reservation/banner-r.jpg);
 		  height: 350px;
 		}
 		.container > h2 {
@@ -63,32 +63,50 @@
     <div class="review-img"></div>
 </div>
 <div class="container">
-  <h2 class="text-center">후기 작성</h2>
-  <form name="myform" method="post" action="${ctp}/ReviewInputOk.rev" enctype="multipart/form-data">
+  <h2 class="text-center">행사 등록</h2>
+  <form name="myform" method="post" action="${ctp}/ReservationInputOk.res" enctype="multipart/form-data">
     <table class="table table-bordered">
       <tr>
-        <th class="text-center">글쓴이</th>
-        <td>${sNickName}</td>
+        <th class="text-center">행사명</th>
+        <td>
+        	<input type="text" name="title" id="title" class="form-control" />
+        </td>
       </tr>
       <tr>
-	      <th class="text-center">파일명</th> 
+        <th class="text-center">행사 참가비</th>
+        <td>
+        	<input type="text" name="price" id="price" class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <th class="text-center">행사 시작일</th>
+        <td>
+        	<input type="date" name="startDate" id="startDate" class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <th class="text-center">행사 마감일</th>
+        <td>
+        	<input type="date" name="endDate" id="endDate" class="form-control" />
+        </td>
+      </tr>
+      <tr>
+	      <th class="text-center">행사 이미지</th> 
 		    <td>
 			    <input type="file" name="fName" id="file" class="form-control-file border mb-2">
 		    </td>
 	    </tr>
       <tr>
-        <th class="text-center">글내용</th>
+        <th class="text-center">행사 소개글</th>
         <td><textarea rows="6" name="content" class="form-control" required></textarea></td>
       </tr>
       <tr>
         <td colspan="2" class="text-center">
-          <input type="button" value="글올리기" onclick="fCheck()" class="btn btn-primary"/> &nbsp;
-          <input type="button" value="돌아가기" onclick="location.href='${ctp}/ReviewList.rev';" class="btn btn-secondary"/>
+          <input type="button" value="행사 모집하기" onclick="fCheck()" class="btn btn-primary"/> &nbsp;
+          <input type="button" value="돌아가기" onclick="location.href='${ctp}/ReservationList.res';" class="btn btn-secondary"/>
         </td>
       </tr>
     </table>
-    <!-- 혹여 해킹당했을 경우를 대비하여 ip를 넣었다!? -->
-    <input type="hidden" name="hostIP" value="${pageContext.request.remoteAddr}"/>
   </form>
 </div>
 <p><br/></p>
